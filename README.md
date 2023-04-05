@@ -7,20 +7,11 @@ Updated April 4, 2023
 SCAN improves inferred mutation trees by assessing their reliabilities. The SCAN program was developed by Tenzin Dolker. See Miura et al. (ref. 1) for the detail. You are free to download, modify, and expand this code under a permissive license similar to the BSD 2-Clause License (see below). 
 
 ## Dependencies
-1. python 3 (v3.8.10 was tested)
- > python packages: 
- >>  scipy
- >>   
- >>  biopython
- >>
- >>  numpy
- >>
- >>  graphviz
- >>   
- >>  pydot
- >>  
- >>  matplotlib
- > Note: If the installation of these python packages is not easy, you may want to use Anaconda for Python 3 (https://www.anaconda.com/distribution/). Or you can try python3 -m pip install [package name].
+* python 3 (v3.8.10 was tested)
+* python packages: 
+ scipy, biopython, numpy, graphviz, pydot, matplotlib
+ 
+ Note: If the installation of these python packages is not easy, you may want to use Anaconda for Python 3 (https://www.anaconda.com/distribution/). Or you can try python3 -m pip install [package name].
 
 ## How to use SCAN
 
@@ -29,41 +20,48 @@ SCAN improves inferred mutation trees by assessing their reliabilities. The SCAN
 #### input 
 - inferred mutation tree file (GV format)
  
-List (1) the node (mutation ID), (2) the ancestor descendant relationship of mutations, and (3) cell sequence attachement node. Mutation ID is the position of a mutation in the cell sequences file. Cell ID should be named by, ‘s’ number, e.g., s10. The number represent the line of the cell in cell order file. For example,
+List (1) the node (mutation ID), (2) the ancestor descendant relationship of mutations, and (3) cell sequence attachement node. Mutation ID is the position of a mutation in the cell sequences file. Cell ID should be named by, â€˜sâ€™ number, e.g., s10. The number represent the line of the cell in cell order file. For example,
  
- ` digraph G {
+digraph G {
+ 
 node [Mutation ID];
+
 1 -> 2;
+
 1 -> 3;
+
 2 -> 4;
-…
+
+â€¦
+
 1 -> s31;
+
 3 -> s8;
+
 3 -> s83;
-…
-}`
+
+â€¦
+
+}
  
 - cell order file
  
 The line number should correspond to the cell ID in the mutation tree file. For example,
  
- `Cell1
+Cell1
+
 Cell2
-…`
+
+â€¦
 
 - Inferred cell sequences file (FASTA format)
  
-* "T": Mutant allele
-* "A": Wild-type allele
-* "?": Missing base
+"T": Mutant allele
 
-For example,
- 
- `>Cell1
-AAATTTT
->Cell2
-TTTTTAA
-…`
+"A": Wild-type allele
+
+"?": Missing base
+
 
 #### output files
  - Mutation tree with SCAN scores (png and dot file)
